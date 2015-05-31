@@ -25,8 +25,8 @@ public class Ball
     {
         this.mainGamePanel = mainGamePanel;
         rectF = new RectF();
-        x = mainGamePanel.paddle.x + mainGamePanel.paddle.width / 2;
-        y = mainGamePanel.paddle.y - r;
+        x = mainGamePanel.platform.x + mainGamePanel.platform.width / 2;
+        y = mainGamePanel.platform.y - r;
     }
 
     public void drawBall(Canvas canvas)
@@ -65,7 +65,7 @@ public class Ball
 
     public void pickupPaddle()
     {
-        if (rectF.intersect(new RectF(mainGamePanel.paddle.rect)))
+        if (rectF.intersect(new RectF(mainGamePanel.platform.rect)))
         {
             yy = -1;
         }

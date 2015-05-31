@@ -20,10 +20,11 @@ public class MainGamePanel extends SurfaceView implements SurfaceHolder.Callback
     public List<Block> listOfBlocks;
     private Canvas canvas;
     private SurfaceHolder surfaceHolder;
-    public Paddle paddle;
-    private GameThread th;
+    public Platform platform;
+    private ThreadOfGame th;
     public Ball ball;
     private int lives = 3;
+
 
     public MainGamePanel(Context context)
     {
@@ -32,8 +33,9 @@ public class MainGamePanel extends SurfaceView implements SurfaceHolder.Callback
         getHolder().addCallback(this);
         surfaceHolder = getHolder();
 //        canvas = this.surfaceHolder.lockCanvas();
-        th = new GameThread(surfaceHolder, this);
+        th = new ThreadOfGame(surfaceHolder, this);
         setFocusable(true);
+
     }
 
     @Override
@@ -42,9 +44,9 @@ public class MainGamePanel extends SurfaceView implements SurfaceHolder.Callback
         th.setRunning(true);
         th.start();
         //canvas = this.surfaceHolder.lockCanvas();
-        for (int i = 0; i < 36; i++)
-            listOfBlocks.add(new Block(20 + ((getWidth() - 40) / 6) * (i % 6), 30 * (i / 6) + 20, (getWidth()) / 7, 25));
-        paddle = new Paddle(getWidth(), getHeight() - 50);
+        for (int i = 0; i < 64; i++)
+            listOfBlocks.add(new Block(20 + ((getWidth() - 40) / 8) * (i % 8), 30 * (i / 8) + 20, (getWidth()) / 9, 25));
+        platform = new Platform(getWidth(), getHeight() - 50);
        // this.render(canvas);
        // surfaceHolder.unlockCanvasAndPost(canvas);
         ball = new Ball(this);
@@ -76,6 +78,7 @@ public class MainGamePanel extends SurfaceView implements SurfaceHolder.Callback
             Paint p = new Paint();
             p.setColor(Color.WHITE);
             canvas.drawText("YOU LOSE", this.getWidth() / 4, this.getHeight() / 2 - 40, p);
+
             th.setRunning(false);
         }
         else
@@ -85,7 +88,7 @@ public class MainGamePanel extends SurfaceView implements SurfaceHolder.Callback
             for (Block block : listOfBlocks)
                 block.paintBrick(canvas);
             ball.drawBall(canvas);
-            paddle.draw(canvas);
+            platform.draw(canvas);
 
         }
 
@@ -93,10 +96,10 @@ public class MainGamePanel extends SurfaceView implements SurfaceHolder.Callback
 
     public void update()
     {
-        paddle.update(getWidth());
+        platform.update(getWidth());
         if (!listOfBlocks.isEmpty())
         {
-            paddle.update(getWidth());
+            platform.update(getWidth());
             ball.update(getWidth(), getHeight());
             if (ball.IsOutOfPanel)
             {
@@ -111,16 +114,16 @@ public class MainGamePanel extends SurfaceView implements SurfaceHolder.Callback
     {
         if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE)
         {
-            paddle.onTouch = true;
+            platform.onTouch = true;
             if (event.getX() * 2 < getWidth())
-                paddle.left = true;
+                platform.left = true;
             else
-                    paddle.left = false;
+                    platform.left = false;
 
         }
         if (event.getAction() == MotionEvent.ACTION_UP)
         {
-            paddle.onTouch = false;
+            platform.onTouch = false;
         }
         return true;
     }

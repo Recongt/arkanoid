@@ -17,14 +17,16 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btn = (Button) findViewById(R.id.button);
         btnExit = (Button) findViewById(R.id.button2);
         btn.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View view)
             {
-                Intent myIntent = new Intent(MainActivity.this, GameActivity.class);
+                Intent myIntent = new Intent(MainActivity.this, ActivityGame.class);
                 MainActivity.this.startActivity(myIntent);
+
             }
         });
 
@@ -47,12 +49,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }

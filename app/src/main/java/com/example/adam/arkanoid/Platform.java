@@ -5,17 +5,17 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-public class Paddle
+public class Platform
 {
 	public int x;
 	public int y;
 	public Rect rect;
-	public int width = 100;
+	public int width = 120;
 	public int speed = 6;
 	public boolean onTouch = false;
 	public boolean left = false;
 	
-	public Paddle(int x, int y)
+	public Platform(int x, int y)
 	{
 		this.x = (int) (Math.random()*(x - width));
 		this.y = y;
@@ -25,9 +25,10 @@ public class Paddle
 	public void draw(Canvas canvas)
 	{
 		Paint paint = new Paint();
-		paint.setColor(Color.BLACK);
-		rect = new Rect(x, y, x + width, y + 20);
+		paint.setColor(Color.WHITE);
+		rect = new Rect(x, y, x + width, y + 16);
 		canvas.drawRect(rect, paint);
+
 	}
 
 	public void update(int screenWidth)

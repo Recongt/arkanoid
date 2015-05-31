@@ -4,9 +4,9 @@ import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 /**
- * Created by Jarek on 2015-05-29.
+ * Created by Adam on 2015-05-29.
  */
-public class GameThread extends Thread
+public class ThreadOfGame extends Thread
 {
     // Surface holder that can access the physical surface
     private SurfaceHolder surfaceHolder;
@@ -18,8 +18,9 @@ public class GameThread extends Thread
         this.running = running;
     }
 
-    public GameThread(SurfaceHolder surfaceHolder, MainGamePanel mainGamePanel)
+    public ThreadOfGame(SurfaceHolder surfaceHolder, MainGamePanel mainGamePanel)
     {
+
         super();
         this.surfaceHolder = surfaceHolder;
         this.mainGamePanel = mainGamePanel;

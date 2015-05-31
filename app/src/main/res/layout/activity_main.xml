@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.adam.arkanoid.MainActivity">
+    tools:context="com.example.adam.arkanoid.MainActivity"
+    android:background="@drawable/backg">
 
 
     <Button
@@ -16,7 +17,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        style="@style/Platform.ThemeOverlay.AppCompat.Dark"
+        android:background="@drawable/abc_list_focused_holo"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:typeface="sans" />
 
     <Button
         android:layout_width="wrap_content"
@@ -27,5 +33,10 @@
         android:layout_alignRight="@+id/button"
         android:layout_alignEnd="@+id/button"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        style="@style/Platform.ThemeOverlay.AppCompat.Dark"
+        android:background="@drawable/abc_list_focused_holo"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:typeface="sans" />
 </RelativeLayout>
