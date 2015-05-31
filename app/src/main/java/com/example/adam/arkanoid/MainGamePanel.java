@@ -45,8 +45,8 @@ public class MainGamePanel extends SurfaceView implements SurfaceHolder.Callback
         th.start();
         //canvas = this.surfaceHolder.lockCanvas();
         for (int i = 0; i < 64; i++)
-            listOfBlocks.add(new Block(20 + ((getWidth() - 40) / 8) * (i % 8), 30 * (i / 8) + 20, (getWidth()) / 9, 25));
-        platform = new Platform(getWidth(), getHeight() - 50);
+            listOfBlocks.add(new Block(20 + ((getWidth() - 35) / 8) * (i % 8), 30 * (i / 8) + 20, (getWidth()) / 9, 25));
+        platform = new Platform(getWidth(), getHeight() - 40);
        // this.render(canvas);
        // surfaceHolder.unlockCanvasAndPost(canvas);
         ball = new Ball(this);
